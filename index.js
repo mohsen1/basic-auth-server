@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', auth, function (req, res) {
-  res.status(200).body('Authenticated');
+  res.status(200).send('Authenticated');
 });
 
 
