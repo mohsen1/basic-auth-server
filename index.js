@@ -1,8 +1,8 @@
 var app = require('express')();
 var basicAuth = require('basic-auth');
 var port = process.env.PORT || 3000;
-var username = 'user';
-var password = 'pass';
+var USERNAME = 'user';
+var PASSWORD = 'pass';
 
 var auth = function (req, res, next) {
   function unauthorized(res) {
@@ -16,7 +16,7 @@ var auth = function (req, res, next) {
     return unauthorized(res);
   };
 
-  if (user.name ===  username && user.pass === password) {
+  if (user.name ===  USERNAME && user.pass === PASSWORD) {
     return next();
   } else {
     return unauthorized(res);
@@ -26,7 +26,8 @@ var auth = function (req, res, next) {
 // Enable CORS
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   next();
 });
 
